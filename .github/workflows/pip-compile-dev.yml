@@ -27,6 +27,8 @@ jobs:
               'pip-compile(static)'
               'pip-compile(spelling)'
               'pip-compile(tag)'
+              'pip-compile(pip-compile)'
+              'pip-compile(pr_labeler)'
             python-versions: "3.11"
           - base-branch: stable-2.18
             pr-branch: pip-compile/stable-2.18/dev
@@ -35,6 +37,8 @@ jobs:
               'pip-compile(typing)'
               'pip-compile(static)'
               'pip-compile(spelling)'
+              'pip-compile(pip-compile)'
+              'pip-compile(pr_labeler)'
             python-versions: "3.11"
           - base-branch: stable-2.17
             pr-branch: pip-compile/stable-2.17/dev
@@ -43,6 +47,8 @@ jobs:
               'pip-compile(typing)'
               'pip-compile(static)'
               'pip-compile(spelling)'
+              'pip-compile(pip-compile)'
+              'pip-compile(pr_labeler)'
             python-versions: "3.10"
           - base-branch: stable-2.16
             pr-branch: pip-compile/stable-2.16/dev
@@ -51,6 +57,8 @@ jobs:
               'pip-compile(typing)'
               'pip-compile(static)'
               'pip-compile(spelling)'
+              'pip-compile(pip-compile)'
+              'pip-compile(pr_labeler)'
             python-versions: "3.10"
     name: "Refresh dev dependencies"
     uses: ./.github/workflows/reusable-pip-compile.yml
