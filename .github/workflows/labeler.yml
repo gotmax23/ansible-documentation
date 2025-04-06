@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 "on":
-  pull_request_target:
+  pull_request_target:  # zizmor: ignore[dangerous-triggers]
   issues:
     types:
       - opened
@@ -20,6 +20,9 @@
         type: number
 
 name: "Triage Issues and PRs"
+
+permissions:
+  contents: read
 
 jobs:
   label_prs:
@@ -40,6 +43,8 @@ jobs:
           private_key: ${{ secrets.BOT_APP_KEY }}
       - name: Checkout parent repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Install Python 3.11
         uses: actions/setup-python@v5
         with:

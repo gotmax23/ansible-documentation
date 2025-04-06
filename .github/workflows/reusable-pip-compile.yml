@@ -46,7 +46,7 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_APP_ID }}
           private_key: ${{ secrets.BOT_APP_KEY }}
-      - name: Check out repo
+      - name: Check out repo  # zizmor: ignore[artipacked]
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -82,7 +82,11 @@ jobs:
         env:
           # Ensure the latest pip version is used
           VIRTUALENV_DOWNLOAD: '1'
-          #
+
+        # nox-args is defined statically in the calling workflows and passing it
+        # as a shell variable presents quoting issues, so ignore zizmor error
+        # for now.
+        # zizmor: ignore[template-injection]
         run: |
           nox ${{ inputs.nox-args }}
       - name: Push new dependency versions and create a PR

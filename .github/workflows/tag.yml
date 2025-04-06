@@ -11,6 +11,9 @@ name: Sync tags with ansible-core releases
   schedule:
     - cron: "0 * * * *"  # Hourly
 
+permissions:
+  contents: read  # read-only because we use bot token to push
+
 jobs:
   tag:
     runs-on: "ubuntu-latest"
@@ -24,7 +27,7 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_APP_ID }}
           private_key: ${{ secrets.BOT_APP_KEY }}
-      - name: Check out us
+      - name: Check out us  # zizmor: ignore[artipacked]
         uses: actions/checkout@v4
         with:
           path: ansible-documentation
@@ -36,6 +39,7 @@ jobs:
           repository: ansible/ansible
           path: ansible
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup nox
         uses: wntrblm/nox@2025.02.09
         with:
